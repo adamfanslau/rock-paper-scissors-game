@@ -28,6 +28,10 @@ h1, h3 {
     text-align: center;
 }
 
+.image-item:hover {
+    background: linear-gradient(red, white, white, white, white);
+}
+
 @media (max-width: 800px) {
     #images-container {
         display: block;
