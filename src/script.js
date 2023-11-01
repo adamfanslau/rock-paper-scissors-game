@@ -19,7 +19,9 @@ function playerChoseScissors (event) {
 }
 
 function computerChoice () {
+    // generate random number between 0 - 2
     let randomNumber = Math.floor(Math.random() * 3);
+    console.log(`Generated random number: ${randomNumber}`);
 
     return randomNumber;
 }
