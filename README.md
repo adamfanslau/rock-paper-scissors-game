@@ -1,4 +1,4 @@
-# rock-paper-scissors-game
+# Rock Paper Scissors Game
 Javascript game of rock paper scissors
 
 ## The game is hosted on AWS S3:
