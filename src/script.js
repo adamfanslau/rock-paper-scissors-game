@@ -1,22 +1,25 @@
 let rock = document.getElementById("rock");
 let paper = document.getElementById("paper");
 let scissors = document.getElementById("scissors");
+let modal = document.getElementById("modal-back");
+let closeModalButton = document.getElementById("close-modal");
+let gameResultMessage = document.getElementById("game-result");
 
-rock.addEventListener("click", playerChoseRock);
-paper.addEventListener("click", playerChosePaper);
-scissors.addEventListener("click", playerChoseScissors);
-
-function playerChoseRock (event) {
+rock.addEventListener("click", () => {
     checkWhoWon(0, computerChoice());
-}
+});
 
-function playerChosePaper (event) {
+paper.addEventListener("click", () => {
     checkWhoWon(1, computerChoice());
-}
+});
 
-function playerChoseScissors (event) {
+scissors.addEventListener("click", () => {
     checkWhoWon(2, computerChoice());
-}
+});
+
+closeModalButton.addEventListener("click", () => {
+    modal.style.display = "none";
+});
 
 function computerChoice () {
     // generate random number between 0 - 2
@@ -27,9 +30,11 @@ function computerChoice () {
 }
 
 function checkWhoWon (playerHand, computerHand) {
-    // rock = 0, paper = 1, scissors = 2
-    let message = `Computer picked ${translateNumberToHand(computerHand)}\n`;
     
+    let message = `<p>You picked ${translateNumberToHand(playerHand)}</p>`
+    message += `<p>Computer picked ${translateNumberToHand(computerHand)}</p><h4>`;
+    
+    // rock = 0, paper = 1, scissors = 2
     if (playerHand === 0 && computerHand === 1) {
         message += "Computer won!";
     } else if (playerHand === 0 && computerHand === 2) {
@@ -48,7 +53,11 @@ function checkWhoWon (playerHand, computerHand) {
         message += "Sorry, unexpected error occured....";
     }
 
-    alert(message);
+    message += "</h4>";
+
+    gameResultMessage.innerHTML = message;
+
+    modal.style.display = "block";
 }
 
 function translateNumberToHand (number) {
